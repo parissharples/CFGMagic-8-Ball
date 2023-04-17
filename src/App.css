@@ -1,50 +1,75 @@
 .App {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin: 50px auto;
+font-family: Arial, sans-serif;
+text-align: center;
+margin: 50px auto;
 }
-
 h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-  color: white;
+font-size: 36px;
+margin-bottom: 20px;
+color: white;
 }
-
 button {
-  background-color: #0d00ff;
-  color: white;
-  font-size: 20px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
+background-color: white;
+border: solid;
+border-width: 2cm;
+color: black;
+padding: 10px 20px;
+text-align: center;
+text-decoration: none;
+display: flex;
+font-size: 16px;
+margin: auto;
+cursor: pointer;
+border-radius: 50%;
+display:block;
+height: 300px;
+width: 300px;
+margin: auto;
+top: 50%;
+left: 50%;
 }
-
 button:hover {
-  background-color:  #645cff;
+background-color: white;
+}
+button:active {
+animation: shake 0.5s;
+animation-iteration-count: 3;
+}
+@keyframes shake {
+0% { transform: translate(3px, 3px) rotate(0deg); }
+25% { transform: translate(-3px, -3px) rotate(5deg); }
+50% { transform: rotate(0deg); }
+75% { transform: rotate(-5deg); }
+100% { transform: rotate(0deg); }
+
 }
 
 .answer {
-  margin-top: 50px;
-  font-size: 24px;
-  color: white;
-  font-size: 24px;
-  text-align: center;
-
+font-size: 24px;
+color: black;
+font-size: 24px;
+text-align: center;
 }
-
 .answer-container {
-  margin-top: 50px;
-  position: relative;
-  width: 200px;
-  height: 200px;
-  background-color: #ddd;
-  box-shadow: 0px 0px 10px #999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+margin-top: 50px;
+position: relative;
+width: 200px;
+height: 200px;
+background-color: #ddd;
+box-shadow: 0px 0px 10px #999;
+display: flex;
+justify-content: center;
+align-items: center;
 }
-
 body {
-  background-color: #000;
+background-color: #f3fa3e;
 }
+.shakeBall {
+background-color: black;
+border: 1px solid black;
+border-radius: 50%;
+width: 300px;
+height: 300px;
+margin: 0 auto;
+margin-bottom: 30px;
+margin-top: 30px;
