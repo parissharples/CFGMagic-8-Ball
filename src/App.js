@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './app.css'
+import React, { useState, useEffect } from 'react';
+import './App.css';
 
 const answers = [
-"It is certain",
+  "It is certain",
   "Without a doubt",
   "You may rely on it",
   "Yes definitely",
@@ -23,26 +23,49 @@ const answers = [
   "Very doubtful",
   "My reply is no"
 ];
+
 function App() {
-const [answer, setAnswer] = useState('Shake the ball!');
-const shakeBall = () => {
-const randomIndex = Math.floor(Math.random() * answers.length);
-setAnswer(answers[randomIndex]);
-};
+  const [answer, setAnswer] = useState('Shake the ball!');
+  const [question, setQuestion] = useState('');
+  const [playSound, setPlaySound] = useState(false);
 
-return (
-<div className='App'>
-<h1>Magic 8 Ball</h1>
+  const shakeBall = () => {
+    if (question === '') {
+      setPlaySound(true);
+      return;
+    }
+    const randomIndex = Math.floor(Math.random() * answers.length);
+    const answer = answers[randomIndex];
+    setAnswer(answer);
+  };
 
+  useEffect(() => {
+    if (playSound) {
+      const alertSound = document.getElementById('alert');
+      alertSound.play();
+      setPlaySound(false);
+    }
+  }, [playSound]);
 
-<button onClick={shakeBall}>
-{answer && (
-<div className='answer'>
-{answer}
-</div>
-)}
-</button>
-</div>
-);
+  return (
+    <div className='App'>
+      <div className='boxyBox'></div>
+
+      <h1>Magic 8 Ball</h1>
+      <p>Ask a yes or no question and click the button to get your answer!</p>
+      <input type="text" value={question} onChange={(e) => setQuestion(e.target.value)} />
+      <button onClick={shakeBall} disabled={!question}>
+        {answer && (
+          <div className='answer'>
+            {answer}
+          </div>
+        )}
+      </button>
+      <div className='boxyBox'></div>
+
+      <audio id="alert" src="https://drive.google.com/file/d/1lheLqs5kYt4T0Y9NYjEBr6XCV7IdIGmY/view?usp=share_link"></audio>
+    </div>
+  );
 }
+
 export default App;
